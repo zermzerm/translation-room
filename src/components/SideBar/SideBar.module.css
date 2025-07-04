@@ -2,9 +2,37 @@
   position: fixed;
   background-color: #111111;
   color: white;
-  width: 250px;
-  height: calc(100% - 60px);
-  top: 80px;
+  width: 210px;
+  height: calc(100% - 56px);
+  top: 56px;
   left: 0;
   z-index: 900;
+  padding: 14px;
+  font-size: 13px;
+  font-weight: 250;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.firstSection {
+  background-color: #008578;
+}
+
+.SideBarSection {
+  display: flex;
+  gap: 10px;
+  padding: 7px 10.5px;
+}
+
+.SideBarSection:hover {
+  background-color: rgb(32, 41, 57);
+}
+
+.SideBarIcon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
 }
