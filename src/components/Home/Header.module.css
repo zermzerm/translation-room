@@ -13,7 +13,7 @@
 
 .Description {
   font-size: 14px;
-  margin-top: 3.5px;
+  margin-top: 10px;
   color: rgb(111, 111, 111);
 }
 
@@ -31,5 +31,4 @@
 
 .Button:hover {
   background-color: #005750;
-  cursor: pointer;
 }

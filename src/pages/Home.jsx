@@ -4,9 +4,9 @@ import styles from "./Home.module.css";
 
 export default function Home() {
   return (
-    <div className={styles.Container}>
+    <main className={styles.Container}>
       <Header />
       <Content />
-    </div>
+    </main>
   );
 }

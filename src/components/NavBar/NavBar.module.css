@@ -22,13 +22,14 @@
 }
 
 .LogoSection {
-  font-size: 15px;
-
+  font-size: 15.5px;
   background-color: #486d66;
   width: 28px;
   height: 28px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  line-height: -1;
 }
 
 .AlarmSection {

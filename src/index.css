@@ -16,6 +16,12 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  line-height: 1;
+}
+
+ul,
+li {
+  list-style-type: none;
 }
 
 a {
@@ -29,4 +35,5 @@ button {
   border: none;
   margin: 0;
   padding: 0;
+  cursor: pointer;
 }
