@@ -1,0 +1,35 @@
+.Container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 21px;
+}
+
+.Title {
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.Description {
+  font-size: 14px;
+  margin-top: 3.5px;
+  color: rgb(111, 111, 111);
+}
+
+.Button {
+  width: 108px;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: rgb(55, 132, 120);
+  color: white;
+  padding: 7px 10.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Button:hover {
+  background-color: #005750;
+  cursor: pointer;
+}
