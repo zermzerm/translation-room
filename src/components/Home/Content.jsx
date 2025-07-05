@@ -15,10 +15,11 @@ export default function Content() {
       <div>
         <input className={styles.Input} placeholder="방이름, 본부, 현장명으로 검색..." />
         <div className={styles.DropDownWrapper}>
-          <DropDown option="dd" />
-          <DropDown option="dd" />
-          <DropDown option="ss" />
-          <DropDown option="dd" />
+          <DropDown type="headquarter" />
+          <DropDown type="field" />
+          <DropDown type="activity" />
+          <DropDown type="date" />
+          <DropDown type="status" />
         </div>
       </div>
     </section>

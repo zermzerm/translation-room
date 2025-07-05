@@ -1,11 +1,12 @@
-export const DropDownCheckIcon = () => (
+export const DropDownCheckUpIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
+    width="16"
+    height="16"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    stroke="rgb(182, 182, 191)"
+    transform="rotate(180)"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"

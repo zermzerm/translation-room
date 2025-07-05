@@ -1,20 +1,20 @@
 import {useEffect, useRef, useState} from "react";
+import {DropDownCheckUpIcon} from "../../assets/icons/DropDownCheckUpIcon";
+import {DropDownCheckDownIcon} from "../../assets/icons/DropDownCheckDownIcon";
+import * as optionData from "../../constants/options";
 import styles from "./DropDown.module.css";
 
-const headquarter = ["전체 본부", "대우건설", "본사", "서울본사"];
-
-export default function DropDown(option) {
+export default function DropDown({type}) {
+  const options = optionData[type]();
   const [showOptions, setShowOptions] = useState(false);
-  const [selected, setSelected] = useState(headquarter[0]);
+  const [selected, setSelected] = useState(options[0]);
   const dropdownRef = useRef(null);
-
-  console.log(selected);
 
   const selectOption = (current) => {
     setSelected(current);
     setShowOptions(false);
   };
-
+  console.log(selected);
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -32,21 +32,26 @@ export default function DropDown(option) {
     <div
       className={styles.Container}
       ref={dropdownRef}
-      onClick={() => setShowOptions((prev) => !prev)}
+      onClick={(e) => {
+        e.stopPropagation();
+        setShowOptions((prev) => !prev);
+      }}
     >
       <div className={styles.SelectBox}>{selected}</div>
+      {showOptions ? <DropDownCheckUpIcon /> : <DropDownCheckDownIcon />}
+
       {showOptions && (
         <ul className={styles.Ul}>
-          {headquarter.map((el, idx) => (
+          {options.map((option, idx) => (
             <li
               key={idx}
               className={styles.Li}
               onClick={(e) => {
                 e.stopPropagation();
-                selectOption(el);
+                selectOption(option);
               }}
             >
-              <div className={styles.Element}>{el}</div>
+              <div className={styles.Element}>{option}</div>
             </li>
           ))}
         </ul>

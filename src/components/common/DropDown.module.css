@@ -6,6 +6,9 @@
   background-color: #f3f3f5;
   font-size: 12px;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .SelectBox {
