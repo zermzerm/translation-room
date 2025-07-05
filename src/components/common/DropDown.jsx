@@ -5,7 +5,7 @@ import * as optionData from "../../constants/options";
 import styles from "./DropDown.module.css";
 
 export default function DropDown({type}) {
-  const options = optionData[type]();
+  const options = optionData[type];
   const [showOptions, setShowOptions] = useState(false);
   const [selected, setSelected] = useState(options[0]);
   const dropdownRef = useRef(null);
