@@ -99,19 +99,17 @@
   background-color: #ebf2f1;
 }
 
-td svg {
+.Date svg,
+.Record svg,
+.Data svg {
   margin-right: 7px;
   position: relative;
   top: 1.5px;
 }
 
-/* .Status {
-  flex-direction: column;
-} */
-
 .StatusWrapper {
   display: flex;
   flex-direction: column;
-  gap: 4px;
   align-items: center;
+  gap: 8px;
 }

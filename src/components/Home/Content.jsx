@@ -48,11 +48,11 @@ export default function Content() {
                   <DateIcon />
                   <span>{data.startDate}</span>
                 </td>
-                <td>
+                <td className={styles.Record}>
                   {data.record && <DocumentIcon />}
                   <span>{data.record}</span>
                 </td>
-                <td>
+                <td className={styles.Data}>
                   {data.data && (
                     <>
                       <DocumentIcon /> <DownloadIcon />
