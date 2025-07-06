@@ -47,7 +47,7 @@ export default function Content() {
           <thead>
             <tr className={styles.HeadRow}>
               {TableHead.map((head, idx) => (
-                <td key={idx}>{head}</td>
+                <th key={idx}>{head}</th>
               ))}
             </tr>
           </thead>
@@ -66,7 +66,11 @@ export default function Content() {
                   <span>{data.startDate}</span>
                 </td>
                 <td className={styles.Record}>
-                  {data.record && <DocumentIcon />}
+                  {data.record && (
+                    <>
+                      <DocumentIcon /> <DownloadIcon />
+                    </>
+                  )}
                   <span>{data.record}</span>
                 </td>
                 <td className={styles.Data}>
