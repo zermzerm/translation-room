@@ -59,7 +59,7 @@
 .Table {
   margin-top: 20px;
   width: 100%;
-  height: 100%;
+  height: auto;
   border: 1px solid #e5e5e5;
   font-size: 12.25px;
   font-weight: 500;

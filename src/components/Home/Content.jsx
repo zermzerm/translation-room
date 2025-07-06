@@ -6,8 +6,20 @@ import {DownloadIcon} from "../../assets/icons/DownloadIcon";
 import DropDown from "../common/DropDown";
 import {TableData, TableHead} from "../../constants/table";
 import StatusIcon from "../common/StatusIcon";
+import {useState} from "react";
 
 export default function Content() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filterData = TableData.filter((data) => {
+    const term = searchTerm.toLowerCase();
+    return (
+      data.headquarter.toLowerCase().includes(term) ||
+      data.activity.toLowerCase().includes(term) ||
+      data.roomName.toLowerCase().includes(term)
+    );
+  });
+
   return (
     <section className={styles.Container}>
       <div className={styles.Header}>
@@ -18,7 +30,12 @@ export default function Content() {
         </button>
       </div>
       <div>
-        <input className={styles.Input} placeholder="방이름, 본부, 현장명으로 검색..." />
+        <input
+          type="search"
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className={styles.Input}
+          placeholder="방이름, 본부, 현장명으로 검색..."
+        />
         <div className={styles.DropDownWrapper}>
           <DropDown type="headquarter" />
           <DropDown type="field" />
@@ -35,7 +52,7 @@ export default function Content() {
             </tr>
           </thead>
           <tbody>
-            {TableData.map((data) => (
+            {filterData.map((data) => (
               <tr className={styles.Row}>
                 <td>{data.id}</td>
                 <td>{data.headquarter}</td>
