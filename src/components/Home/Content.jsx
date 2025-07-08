@@ -71,7 +71,9 @@ export default function Content() {
                       <DocumentIcon /> <DownloadIcon />
                     </>
                   )}
-                  <span>{data.record}</span>
+                  <a href="/files/plan.pptx" download={true}>
+                    {data.record}
+                  </a>
                 </td>
                 <td className={styles.Data}>
                   {data.data && (
@@ -79,7 +81,9 @@ export default function Content() {
                       <DocumentIcon /> <DownloadIcon />
                     </>
                   )}
-                  <span>{data.data}</span>
+                  <a href="/files/word.doc" download={true}>
+                    {data.data}
+                  </a>
                 </td>
                 <td className={styles.Date}>
                   <DateIcon />

@@ -5,7 +5,9 @@ import {DownloadIcon} from "../../../assets/icons/DownloadIcon";
 export default function ModalThird({qrCode}) {
   const handleDownloadClick = () => {
     const canvas = document.querySelector("canvas");
-    const url = canvas ? canvas.toDataURL("image/png") : "";
+    if (!canvas) return;
+
+    const url = canvas.toDataURL("image/png");
     const link = document.createElement("a");
     link.href = url;
     link.download = `qr-${qrCode}.png`;

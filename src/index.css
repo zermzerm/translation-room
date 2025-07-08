@@ -28,6 +28,11 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+a:visited,
+a:active,
+a:link {
+  color: black;
+}
 
 button {
   background: none;

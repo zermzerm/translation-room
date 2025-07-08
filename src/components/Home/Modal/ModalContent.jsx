@@ -93,7 +93,7 @@ export default function ModalContent({setIsOpen}) {
               setStep((prev) => prev + 1);
             }}
           >
-            다음
+            {step === 3 ? "생성" : "다음"}
           </button>
         </div>
       </div>
