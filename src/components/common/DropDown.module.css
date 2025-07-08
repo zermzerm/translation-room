@@ -11,6 +11,10 @@
   align-items: center;
 }
 
+.ContainerWidth {
+  width: 100%;
+}
+
 .SelectBox {
   width: 100%;
   height: 100%;
@@ -26,6 +30,11 @@
   left: 0;
   z-index: 1000;
   background-color: #fff;
+  box-shadow: 0 0 4px rgb(207, 207, 207);
+}
+
+.UlWidth {
+  width: 100%;
 }
 
 .Li {
@@ -33,6 +42,10 @@
   height: 100%;
   border: 1px solid #f3f3f5;
   padding: 3px;
+}
+
+.LiWidth {
+  width: 100%;
 }
 
 .Element {

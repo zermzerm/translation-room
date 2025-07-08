@@ -1,8 +1,8 @@
 import Modal from "react-modal";
-import { PlusIcon } from "../../assets/icons/PlusIcon";
+import {PlusIcon} from "../../assets/icons/PlusIcon";
 import styles from "./Header.module.css";
-import { useState } from "react";
-import ModalContent from "./ModalContent";
+import {useState} from "react";
+import ModalContent from "./Modal/ModalContent";
 
 Modal.setAppElement("#root");
 
@@ -13,9 +13,7 @@ export default function Header() {
     <header className={styles.Container}>
       <div>
         <div className={styles.Title}>SMARTok (실시간 번역)</div>
-        <div className={styles.Description}>
-          실시간 다국어 번역 서비스를 관리합니다
-        </div>
+        <div className={styles.Description}>실시간 다국어 번역 서비스를 관리합니다</div>
       </div>
       <div>
         <button className={styles.Button} onClick={() => setIsOpen(true)}>

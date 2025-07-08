@@ -4,7 +4,7 @@ import {DropDownCheckDownIcon} from "../../assets/icons/DropDownCheckDownIcon";
 import * as optionData from "../../constants/options";
 import styles from "./DropDown.module.css";
 
-export default function DropDown({type}) {
+export default function DropDown({type, width = false, setOption}) {
   const options = optionData[type];
   const [showOptions, setShowOptions] = useState(false);
   const [selected, setSelected] = useState(options[0]);
@@ -12,6 +12,7 @@ export default function DropDown({type}) {
 
   const selectOption = (current) => {
     setSelected(current);
+    setOption(current);
     setShowOptions(false);
   };
   console.log(selected);
@@ -30,7 +31,7 @@ export default function DropDown({type}) {
   }, []);
   return (
     <div
-      className={styles.Container}
+      className={`${styles.Container} ${width && styles.ContainerWidth}`}
       ref={dropdownRef}
       onClick={(e) => {
         e.stopPropagation();
@@ -41,11 +42,11 @@ export default function DropDown({type}) {
       {showOptions ? <DropDownCheckUpIcon /> : <DropDownCheckDownIcon />}
 
       {showOptions && (
-        <ul className={styles.Ul}>
+        <ul className={`${styles.Ul} ${width && styles.UlWidth}`}>
           {options.map((option, idx) => (
             <li
               key={idx}
-              className={styles.Li}
+              className={`${styles.Li} ${width && styles.LiWidth}`}
               onClick={(e) => {
                 e.stopPropagation();
                 selectOption(option);
