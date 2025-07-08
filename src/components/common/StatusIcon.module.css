@@ -18,6 +18,7 @@
   color: white;
   padding: 4px 8px;
   background-color: rgb(232, 49, 56);
+  cursor: pointer;
 }
 
 .Start {
@@ -26,6 +27,7 @@
   color: white;
   padding: 4px 8px;
   background-color: rgb(55, 132, 120);
+  cursor: pointer;
 }
 
 .Verification {

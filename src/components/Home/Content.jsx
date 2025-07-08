@@ -92,7 +92,7 @@ export default function Content() {
                 <td className={styles.Status}>
                   <div className={styles.StatusWrapper}>
                     {data.status.map((stt) => (
-                      <StatusIcon status={stt} />
+                      <StatusIcon status={stt} id={data.id} />
                     ))}
                   </div>
                 </td>
