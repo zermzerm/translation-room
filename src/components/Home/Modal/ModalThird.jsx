@@ -1,8 +1,10 @@
 import {QRCodeCanvas} from "qrcode.react";
 import styles from "./ModalContent.module.css";
 import {DownloadIcon} from "../../../assets/icons/DownloadIcon";
+import {useTranslation} from "react-i18next";
 
 export default function ModalThird({qrCode}) {
+  const {t} = useTranslation();
   const handleDownloadClick = () => {
     const canvas = document.querySelector("canvas");
     if (!canvas) return;
@@ -20,13 +22,11 @@ export default function ModalThird({qrCode}) {
         <QRCodeCanvas value={qrCode} size={200} />
       </div>
       <button className={styles.QrDownload} onClick={handleDownloadClick}>
-        <DownloadIcon /> <p>QR 다운로드</p>
+        <DownloadIcon /> <p>{t("qr_download")}</p>
       </button>
       <div>
-        <p className={styles.QrDescription}>
-          모바일에서 QR 코드를 스캔하여 번역방에 접속할 수 있습니다.
-        </p>
-        <p className={styles.QrDescriptionTwo}>또는 직접 접속: translate.smarty.co.kr</p>
+        <p className={styles.QrDescription}>{t("qr_description")}</p>
+        <p className={styles.QrDescriptionTwo}>{t("or_direct")}: translate.smarty.co.kr</p>
       </div>
     </div>
   );

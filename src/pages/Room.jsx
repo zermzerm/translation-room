@@ -8,7 +8,7 @@ export default function Room() {
 
   const handleTranslate = async () => {
     try {
-      const result = await translateApi("ko", "en", input);
+      const result = await translateApi("ko", "ja", input);
       setTranslated(result);
     } catch (e) {
       alert("번역 중 오류가 발생했습니다.");
@@ -16,7 +16,7 @@ export default function Room() {
   };
   return (
     <div className={styles.Container}>
-      <h2>NMT 번역 테스트</h2>
+      <h2>번역 테스트</h2>
       <textarea
         rows={4}
         value={input}
@@ -24,7 +24,9 @@ export default function Room() {
         placeholder="번역할 문장을 입력하세요"
       />
       <br />
-      <button onClick={handleTranslate}>번역하기</button>
+      <button onClick={handleTranslate} style={{border: "1px solid #000"}}>
+        번역하기
+      </button>
       {translated && (
         <div>
           <h3>번역 결과:</h3>

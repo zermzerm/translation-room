@@ -1,18 +1,23 @@
 import styles from "./ModalContent.module.css";
 import DropDown from "../../common/DropDown";
-import {useState} from "react";
 import {CheckLangIcon} from "../../../assets/icons/CheckLangIcon";
+import {useTranslation} from "react-i18next";
 
-const language = [
-  {id: 1, lan: "영어"},
-  {id: 2, lan: "중국어(간체)"},
-  {id: 3, lan: "태국어"},
-  {id: 4, lan: "러시아어"},
-];
+export default function ModalSecond({
+  setQrActivity,
+  isClicked,
+  setIsClicked,
+  setIsToggle,
+  isToggle,
+}) {
+  const {t} = useTranslation();
 
-export default function ModalSecond({setQrActivity}) {
-  const [isClicked, setIsClicked] = useState([]);
-  const [isToggle, setIsToggle] = useState("작성중");
+  const language = [
+    {id: 1, lan: `${t("english")}`},
+    {id: 2, lan: `${t("simplified_chinese")}`},
+    {id: 3, lan: `${t("thai")}`},
+    {id: 4, lan: `${t("russian")}`},
+  ];
 
   const click = (lan) => {
     setIsClicked((prev) => (prev.includes(lan) ? prev.filter((x) => x !== lan) : [...prev, lan]));
@@ -20,11 +25,11 @@ export default function ModalSecond({setQrActivity}) {
   return (
     <div className={styles.ContentContainer}>
       <div>
-        <label className={styles.Label}>활동구분 *</label>
+        <label className={styles.Label}>{t("activity_type")} *</label>
         <DropDown type="activity" width={true} setOption={setQrActivity} />
       </div>
       <div>
-        <p className={styles.Label}>번역언어 선택 *</p>
+        <p className={styles.Label}>{t("select_lang")} *</p>
         <div className={styles.LanguageWrapper}>
           {language.map((el) => (
             <div
@@ -46,10 +51,10 @@ export default function ModalSecond({setQrActivity}) {
         ))}
       </div>
       <div>
-        <label className={styles.Label}>운영상태 *</label>
+        <label className={styles.Label}>{t("operation_status")} *</label>
         <div className={styles.OperationStatus}>
-          {["작성중", "검증중", "운용"].map((status) => (
-            <div className={styles.StatusToggleContainer}>
+          {[`${t("writing")}`, `${t("verifying")}`, `${t("operating")}`].map((status) => (
+            <div className={styles.StatusToggleContainer} key={status}>
               <div
                 className={`${styles.ToggleContainer} ${
                   isToggle === status && styles.ToggleWrapperChecked

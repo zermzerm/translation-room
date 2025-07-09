@@ -5,16 +5,23 @@ import ModalSecond from "./ModalSecond";
 import ModalThird from "./ModalThird";
 import {SmallCloseIcon} from "../../../assets/icons/SmallCloseIcon";
 import {CheckIcon} from "../../../assets/icons/CheckIcon";
+import {useTranslation} from "react-i18next";
 
 export default function ModalContent({setIsOpen}) {
+  const {t} = useTranslation();
   const [step, setStep] = useState(1);
   const [qrName, setQrName] = useState("");
   const [qrActivity, setQrActivity] = useState("");
+  const [date, setDate] = useState("");
+  const [headquarters, setHeadquarters] = useState("");
+  const [field, setField] = useState("");
+  const [isClicked, setIsClicked] = useState([]);
+  const [isToggle, setIsToggle] = useState(`${t("writing")}`);
 
   return (
     <section className={styles.Container}>
       <div className={styles.Header}>
-        <p className={styles.Title}>번역방 생성</p>
+        <p className={styles.Title}>{t("create")}</p>
         <button onClick={() => setIsOpen(false)} className={styles.CloseButton}>
           <SmallCloseIcon />
         </button>
@@ -24,8 +31,8 @@ export default function ModalContent({setIsOpen}) {
           <div className={`${styles.StatusNumber} ${step >= 1 && styles.StatusCurrent}`}>
             {step > 1 ? <CheckIcon /> : 1}
           </div>
-          <p>기본정보</p>
-          <p className={styles.StatusDescription}>방 정보 입력</p>
+          <p>{t("information")}</p>
+          <p className={styles.StatusDescription}>{t("room_information")}</p>
         </div>
         <div
           style={{
@@ -38,8 +45,8 @@ export default function ModalContent({setIsOpen}) {
           <div className={`${styles.StatusNumber} ${step >= 2 && styles.StatusCurrent}`}>
             {step > 2 ? <CheckIcon /> : 2}
           </div>
-          <p>활동구분/언어</p>
-          <p className={styles.StatusDescription}>설정 선택</p>
+          <p>{t("activity_lang")}</p>
+          <p className={styles.StatusDescription}>{t("setting_select")}</p>
         </div>
         <div
           style={{
@@ -50,14 +57,25 @@ export default function ModalContent({setIsOpen}) {
         ></div>
         <div className={styles.StatusContainer}>
           <div className={`${styles.StatusNumber} ${step >= 3 && styles.StatusCurrent}`}>3</div>
-          <p>공유</p>
-          <p className={styles.StatusDescription}>QR 코드 생성</p>
+          <p>{t("share")}</p>
+          <p className={styles.StatusDescription}>{t("qr_create")}</p>
         </div>
       </div>
       {step === 1 ? (
-        <ModalFirst setQrContent={setQrName} />
+        <ModalFirst
+          setQrContent={setQrName}
+          setDate={setDate}
+          setHeadquarters={setHeadquarters}
+          setField={setField}
+        />
       ) : step === 2 ? (
-        <ModalSecond setQrActivity={setQrActivity} />
+        <ModalSecond
+          setIsClicked={setIsClicked}
+          isClicked={isClicked}
+          setQrActivity={setQrActivity}
+          setIsToggle={setIsToggle}
+          isToggle={isToggle}
+        />
       ) : (
         <ModalThird qrCode={qrName + qrActivity} />
       )}
@@ -74,7 +92,7 @@ export default function ModalContent({setIsOpen}) {
             setIsOpen(false);
           }}
         >
-          취소
+          {t("cancel")}
         </button>
         <div className={styles.NextButtonContainer}>
           {step > 1 && (
@@ -84,16 +102,29 @@ export default function ModalContent({setIsOpen}) {
                 setStep((prev) => prev - 1);
               }}
             >
-              이전
+              {t("prev")}
             </button>
           )}
           <button
             className={styles.NextButton}
             onClick={() => {
-              setStep((prev) => prev + 1);
+              if (step === 3) {
+                localStorage.setItem("translateRoom", {
+                  qrName: qrName,
+                  qrActivity: qrActivity,
+                  date: date,
+                  headquarters: headquarters,
+                  field: field,
+                  isClicked: isClicked,
+                  isToggle: isToggle,
+                });
+                setIsOpen(false);
+              } else {
+                setStep((prev) => prev + 1);
+              }
             }}
           >
-            {step === 3 ? "생성" : "다음"}
+            {step === 3 ? `${t("create")}` : `${t("next")}`}
           </button>
         </div>
       </div>
