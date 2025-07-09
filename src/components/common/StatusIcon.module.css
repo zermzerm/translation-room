@@ -17,8 +17,12 @@
   width: auto;
   color: white;
   padding: 4px 8px;
-  background-color: rgb(232, 49, 56);
+  background-color: oklch(0.637 0.237 25.331);
   cursor: pointer;
+}
+
+.Participation:hover {
+  background-color: oklch(0.577 0.245 27.325);
 }
 
 .Start {
@@ -60,6 +64,7 @@
   border: 1px solid #e5e5e5;
   position: relative;
   top: 1px;
+  cursor: pointer;
 }
 
 .Participation svg,

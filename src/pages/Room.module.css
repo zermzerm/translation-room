@@ -126,6 +126,56 @@
   margin-right: 8px;
 }
 
+.PdfContainer {
+  height: 100%;
+  border: 1px solid #e5e5e5;
+  padding: 14px;
+}
+
+.ScriptContent {
+  height: 493px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+}
+
+.KoScriptContainer {
+  height: 100%;
+}
+
+.KoScriptHeader {
+  height: 42px;
+  display: flex;
+  gap: 10px;
+  padding: 0 14px;
+  border: 1px solid #e5e5e5;
+}
+
+.ScriptWrapper {
+  height: 100%;
+  font-size: 14px;
+  border: 1px solid #e5e5e5;
+  padding: 14px;
+}
+
+.MultilingualHeader {
+  height: 42px;
+  display: flex;
+  gap: 10px;
+  padding: 0 14px;
+  border: 1px solid #e5e5e5;
+}
+
+.MultilingualWrapper {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.EnglishScript {
+  border: 1px solid #e5e5e5;
+}
+
 .Start {
   padding: 7px 10.5px;
   background-color: #008578;

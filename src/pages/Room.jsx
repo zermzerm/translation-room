@@ -1,21 +1,22 @@
-import {useState} from "react";
-import {translateApi} from "../api/api";
+import { useState } from "react";
+import { translateApi } from "../api/api";
 import styles from "./Room.module.css";
-import {TableData} from "../constants/table";
-import {useNavigate, useParams} from "react-router-dom";
-import {useTranslation} from "react-i18next";
-import {AlarmIcon} from "../assets/icons/AlarmIcon";
-import {SettingIcon} from "../assets/icons/SettingIcon";
-import {StartBigIcon} from "../assets/icons/StartBigIcon";
-import {StopIcon} from "../assets/icons/StopIcon";
-import {PauseBigIcon} from "../assets/icons/PauseBigIcon";
-import {UploadIcon} from "../assets/icons/UploadIcon";
-import {DownloadBigIcon} from "../assets/icons/DownloadBigIcon";
-import {DocumentStandardIcon} from "../assets/icons/DocumentStandardIcon";
-import {LanguageIcon} from "../assets/icons/LanguageIcon";
+import { TableData } from "../constants/table";
+import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { AlarmIcon } from "../assets/icons/AlarmIcon";
+import { SettingIcon } from "../assets/icons/SettingIcon";
+import { StartBigIcon } from "../assets/icons/StartBigIcon";
+import { StopIcon } from "../assets/icons/StopIcon";
+import { PauseBigIcon } from "../assets/icons/PauseBigIcon";
+import { UploadIcon } from "../assets/icons/UploadIcon";
+import { DownloadBigIcon } from "../assets/icons/DownloadBigIcon";
+import { DocumentStandardIcon } from "../assets/icons/DocumentStandardIcon";
+import { LanguageIcon } from "../assets/icons/LanguageIcon";
 
 export default function Room() {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
+  const description = t("description");
   const navigate = useNavigate();
   const params = useParams();
   const [input, setInput] = useState("");
@@ -35,13 +36,18 @@ export default function Room() {
   return (
     <div className={styles.Container}>
       <div className={styles.Header}>
-        <button type="button" className={styles.BackButton} onClick={() => navigate("/")}>
+        <button
+          type="button"
+          className={styles.BackButton}
+          onClick={() => navigate("/")}
+        >
           ← {t("back")}
         </button>
         <div className={styles.TitleWrapper}>
           <div className={styles.Title}>{filterData.roomName}</div>
           <div className={styles.Information}>
-            {t(filterData.headquarter)} {t(filterData.field)} • {filterData.operationDate}
+            {t(filterData.headquarter)} {t(filterData.field)} •{" "}
+            {filterData.operationDate}
           </div>
         </div>
       </div>
@@ -69,7 +75,11 @@ export default function Room() {
               className={isTranslation ? styles.Stop : styles.Start}
             >
               {isTranslation ? <PauseBigIcon /> : <StartBigIcon />}
-              {isTranslation ? <p>{t("stopButton")}</p> : <p>{t("startButton")}</p>}
+              {isTranslation ? (
+                <p>{t("stopButton")}</p>
+              ) : (
+                <p>{t("startButton")}</p>
+              )}
             </button>
             <button
               onClick={() => setIsTranslation((prev) => !prev)}
@@ -97,23 +107,31 @@ export default function Room() {
             </div>
           </div>
         </div>
-        <div>
-          <div>pdf뷰어</div>
-          <div>
-            <div>
+        <div className={styles.ScriptContent}>
+          <div className={styles.PdfContainer}>pdf뷰어</div>
+          <div className={styles.KoScriptContainer}>
+            <div className={styles.KoScriptHeader}>
               <div>{t("korean")}</div>
-              <div>{t("korean")}</div>
+              <div>{t("real_time")}</div>
             </div>
-            <div></div>
+            <div className={styles.ScriptWrapper}>
+              {description.split("\n").map((el, idx) => (
+                <p key={idx} className={styles.Script}>
+                  {el}
+                </p>
+              ))}
+            </div>
           </div>
           <div>
-            <div>
+            <div className={styles.MultilingualHeader}>
               <div>{t("translation")}</div>
               <div>{t("korean")}</div>
             </div>
-            <div>ENG (English)</div>
-            <div>CHN (中文)</div>
-            <div>THA (ไทย)</div>
+            <div className={styles.MultilingualWrapper}>
+              <div className={styles.EnglishScript}>ENG (English)</div>
+              <div className={styles.EnglishScript}>CHN (中文)</div>
+              <div className={styles.EnglishScript}>THA (ไทย)</div>
+            </div>
           </div>
         </div>
         <div className={styles.ContentHeader}>
