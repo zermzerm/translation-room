@@ -110,7 +110,7 @@ export default function ModalContent({setIsOpen}) {
             onClick={() => {
               if (step === 3) {
                 localStorage.setItem(
-                  "translateRoom",
+                  "room_" + qrName,
                   JSON.stringify({
                     qrName,
                     qrActivity,
