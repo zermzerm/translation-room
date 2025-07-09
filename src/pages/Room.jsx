@@ -122,7 +122,7 @@ export default function Room() {
               ))}
             </div>
           </div>
-          <div>
+          <div className={styles.MultilingualContainer}>
             <div className={styles.MultilingualHeader}>
               <div>{t("translation")}</div>
               <div>{t("korean")}</div>
