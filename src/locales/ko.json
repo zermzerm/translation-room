@@ -1,0 +1,110 @@
+{
+  "translation_system": "번역 시스템",
+  "standard": "기준",
+  "plan": "계획",
+  "operation": "운영",
+  "operation_status": "운영상태",
+  "check": "점검",
+  "analyze": "분석",
+  "real_time_translation": "실시간 번역",
+  "real_time_description": "실시간 다국어 번역 서비스를 관리합니다",
+  "trans_room_create": "번역방 생성",
+  "information": "기본정보",
+  "room_information": "방 정보 입력",
+  "activity_lang": "활동구분/언어",
+  "setting_select": "설정 선택",
+  "share": "공유",
+  "qr_create": "QR 코드 생성",
+  "cancel": "기준",
+  "prev": "이전",
+  "create": "생성",
+  "room_name": "방 이름",
+  "room_name_placeholder": "번역방 이름을 입력하세요",
+  "operation_date": "운영일자",
+  "date": "날짜",
+  "headquarters": "본부",
+  "headquarters_placeholder": "본부명을 입력하세요",
+  "field_name": "현장명",
+  "field_name_placeholder": "현장명을 입력하세요",
+  "english": "영어",
+  "simplified_chinese": "중국어(간체)",
+  "thai": "태국어",
+  "russian": "러시아어",
+  "writing": "작성중",
+  "operating": "운용",
+  "verifying": "검증중",
+  "activity_type": "활동구분",
+  "total_headquarters": "다음",
+  "filter": {
+    "headquarter": {
+      "all": "전체 본부",
+      "daewoo": "대우건설",
+      "hq": "본사",
+      "seoul": "서울본사"
+    },
+    "field": {
+      "all": "전체 현장",
+      "zone3": "3공구",
+      "zone4": "4공구",
+      "zone5": "5공구",
+      "training": "교육센터",
+      "conference": "대회의실",
+      "executive": "임원회의실"
+    },
+    "activity": {
+      "all": "전체 활동",
+      "tbm": "TBM",
+      "check": "안전조회",
+      "edu": "교육",
+      "presentation": "발표"
+    },
+    "date": {
+      "all": "전체 일자",
+      "2025-06-04": "2025-06-04",
+      "2025-06-03": "2025-06-03",
+      "2025-06-02": "2025-06-02",
+      "2025-06-01": "2025-06-01",
+      "2025-05-30": "2025-05-30"
+    },
+    "status": {
+      "all": "전체 상태",
+      "writing": "작성중",
+      "verifying": "검증중",
+      "operating": "운용"
+    }
+  },
+  "status": {
+    "joined": "참여중",
+    "ready": "준비중",
+    "start": "시작하기",
+    "operating": "운용",
+    "writing": "작성중",
+    "verifying": "검증중"
+  },
+  "common": {
+    "download": "다운로드"
+  },
+  "select_lang": "번역언어 선택",
+  "qr_download": "QR 다운로드",
+  "qr_description": "모바일에서 QR 코드를 스캔하여 번역방에 접속할 수 있습니다.",
+  "or_direct": "또는 직접 접속",
+  "room_list_title": "번역방 목록",
+  "create_room": "번역방 생성",
+  "start": "시작하기",
+  "in_progress": "참여중",
+  "reset_filter": "필터 초기화",
+  "search_input_placeholder": "방이름, 본부, 현장명으로 검색...",
+  "table": {
+    "no": "No",
+    "headquarter": "본부",
+    "field": "현장명",
+    "roomName": "방이름",
+    "activity": "활동구분",
+    "createdDate": "생성일자",
+    "record": "번역속기록",
+    "presentation": "발표및 교육자료",
+    "operationDate": "운영일자",
+    "status": "운영상태"
+  },
+  "next": "다음"
+}

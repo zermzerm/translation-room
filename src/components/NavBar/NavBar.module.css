@@ -37,6 +37,14 @@
   gap: 10px;
 }
 
+.SelectBox {
+  color: #008578;
+  padding: 1.75px 7px;
+  border: 1px solid #008578;
+  background-color: #ebf2f1;
+  border-radius: 12px;
+}
+
 .AlarmWrapper {
   display: flex;
   justify-content: center;

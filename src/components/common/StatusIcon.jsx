@@ -5,36 +5,44 @@ import {SettingIcon} from "../../assets/icons/SettingIcon";
 import {useState} from "react";
 import Modal from "react-modal";
 import ModalContent from "../Home/Modal/ModalContent";
+import {useTranslation} from "react-i18next";
 
 export default function StatusIcon({status, id = ""}) {
+  const {t} = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className={styles.Container}>
       <span
         onClick={() => {
-          if (status === "참여중" || status === "시작하기") {
+          if (status === "status.joined" || status === "status.start") {
             window.location.href = `/room/${id}`;
           }
         }}
         className={
-          `${status}` === "운용"
+          `${status}` === "status.operating"
             ? styles.Operation
-            : `${status}` === "참여중"
+            : `${status}` === "status.joined"
             ? styles.Participation
-            : `${status}` === "시작하기"
+            : `${status}` === "status.start"
             ? styles.Start
-            : `${status}` === "검증중"
+            : `${status}` === "status.verifying"
             ? styles.Verification
-            : `${status}` === "작성중"
+            : `${status}` === "status.writing"
             ? styles.Writing
             : styles.Preparing
         }
       >
-        {`${status}` === "참여중" ? <PauseIcon /> : `${status}` === "시작하기" ? <PlayIcon /> : ""}
-        {status}
+        {`${status}` === "status.joined" ? (
+          <PauseIcon />
+        ) : `${status}` === "status.start" ? (
+          <PlayIcon />
+        ) : (
+          ""
+        )}
+        {t(status)}
       </span>
-      {`${status}` === "참여중" && (
+      {`${status}` === "status.joined" && (
         <span className={styles.Setting} onClick={() => setIsOpen(true)}>
           <SettingIcon />
         </span>

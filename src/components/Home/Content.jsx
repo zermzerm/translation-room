@@ -7,15 +7,24 @@ import DropDown from "../common/DropDown";
 import {TableData, TableHead} from "../../constants/table";
 import StatusIcon from "../common/StatusIcon";
 import {useState} from "react";
+import {useTranslation} from "react-i18next";
 
 export default function Content() {
+  const {t} = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
+  const [option, setOption] = useState("");
+
+  const resetData = () => {
+    setSearchTerm("");
+    setOption("");
+  };
 
   const filterData = TableData.filter((data) => {
     const term = searchTerm.toLowerCase();
     return (
-      data.headquarter.toLowerCase().includes(term) ||
-      data.activity.toLowerCase().includes(term) ||
+      t(data.headquarter).toLowerCase().includes(term) ||
+      t(data.activity).toLowerCase().includes(term) ||
+      t(data.field).toLowerCase().includes(term) ||
       data.roomName.toLowerCase().includes(term)
     );
   });
@@ -23,10 +32,10 @@ export default function Content() {
   return (
     <section className={styles.Container}>
       <div className={styles.Header}>
-        <div className={styles.Title}>번역방 목록</div>
-        <button className={styles.Button}>
+        <div className={styles.Title}>{t("room_list_title")}</div>
+        <button className={styles.Button} onClick={resetData}>
           <ResetIcon />
-          <p>필터 초기화</p>
+          <p>{t("reset_filter")}</p>
         </button>
       </div>
       <div>
@@ -34,36 +43,37 @@ export default function Content() {
           type="search"
           onChange={(e) => setSearchTerm(e.target.value)}
           className={styles.Input}
-          placeholder="방이름, 본부, 현장명으로 검색..."
+          placeholder={t("search_input_placeholder")}
+          value={searchTerm}
         />
         <div className={styles.DropDownWrapper}>
-          <DropDown type="headquarter" />
-          <DropDown type="field" />
-          <DropDown type="activity" />
-          <DropDown type="date" />
-          <DropDown type="status" />
+          <DropDown type="headquarter" setOption={setOption} />
+          <DropDown type="field" setOption={setOption} />
+          <DropDown type="activity" setOption={setOption} />
+          <DropDown type="date" setOption={setOption} />
+          <DropDown type="status" setOption={setOption} />
         </div>
         <table className={styles.Table}>
           <thead>
             <tr className={styles.HeadRow}>
               {TableHead.map((head, idx) => (
-                <th key={idx}>{head}</th>
+                <th key={idx}>{t(head)}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {filterData.map((data) => (
-              <tr className={styles.Row}>
-                <td>{data.id}</td>
-                <td>{data.headquarter}</td>
-                <td className={styles.Field}>{data.field}</td>
-                <td className={styles.RoomName}>{data.roomName}</td>
+              <tr className={styles.Row} key={data.id}>
+                <td>{t(data.id)}</td>
+                <td>{t(data.headquarter)}</td>
+                <td className={styles.Field}>{t(data.field)}</td>
+                <td className={styles.RoomName}>{t(data.roomName)}</td>
                 <td>
-                  <span className={styles.Activity}>{data.activity}</span>
+                  <span className={styles.Activity}>{t(data.activity)}</span>
                 </td>
                 <td className={styles.Date}>
                   <DateIcon />
-                  <span>{data.startDate}</span>
+                  <span>{t(data.startDate)}</span>
                 </td>
                 <td className={styles.Record}>
                   {data.record && (
@@ -72,7 +82,7 @@ export default function Content() {
                     </>
                   )}
                   <a href="/files/plan.pptx" download={true}>
-                    {data.record}
+                    {t(data.record)}
                   </a>
                 </td>
                 <td className={styles.Data}>
@@ -82,17 +92,17 @@ export default function Content() {
                     </>
                   )}
                   <a href="/files/word.doc" download={true}>
-                    {data.data}
+                    {t(data.data)}
                   </a>
                 </td>
                 <td className={styles.Date}>
                   <DateIcon />
-                  <span>{data.operationDate}</span>
+                  <span>{t(data.operationDate)}</span>
                 </td>
                 <td className={styles.Status}>
                   <div className={styles.StatusWrapper}>
-                    {data.status.map((stt) => (
-                      <StatusIcon status={stt} id={data.id} />
+                    {data.status.map((stt, idx) => (
+                      <StatusIcon status={stt} id={data.id} key={idx} />
                     ))}
                   </div>
                 </td>

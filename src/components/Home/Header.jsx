@@ -3,22 +3,24 @@ import {PlusIcon} from "../../assets/icons/PlusIcon";
 import styles from "./Header.module.css";
 import {useState} from "react";
 import ModalContent from "./Modal/ModalContent";
+import {useTranslation} from "react-i18next";
 
 Modal.setAppElement("#root");
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const {t} = useTranslation();
 
   return (
     <header className={styles.Container}>
       <div>
-        <div className={styles.Title}>SMARTok (실시간 번역)</div>
-        <div className={styles.Description}>실시간 다국어 번역 서비스를 관리합니다</div>
+        <div className={styles.Title}>SMARTok ({t("real_time_translation")})</div>
+        <div className={styles.Description}>{t("real_time_description")}</div>
       </div>
       <div>
         <button className={styles.Button} onClick={() => setIsOpen(true)}>
           <PlusIcon />
-          <p>번역방 생성</p>
+          <p>{t("trans_room_create")}</p>
         </button>
         <Modal
           isOpen={isOpen}

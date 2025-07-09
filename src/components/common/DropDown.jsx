@@ -3,8 +3,10 @@ import {DropDownCheckUpIcon} from "../../assets/icons/DropDownCheckUpIcon";
 import {DropDownCheckDownIcon} from "../../assets/icons/DropDownCheckDownIcon";
 import * as optionData from "../../constants/options";
 import styles from "./DropDown.module.css";
+import {useTranslation} from "react-i18next";
 
-export default function DropDown({type, width = false, setOption}) {
+export default function DropDown({type, width = false, setOption = ""}) {
+  const {t} = useTranslation();
   const options = optionData[type];
   const [showOptions, setShowOptions] = useState(false);
   const [selected, setSelected] = useState(options[0]);
@@ -15,20 +17,19 @@ export default function DropDown({type, width = false, setOption}) {
     setOption(current);
     setShowOptions(false);
   };
-  console.log(selected);
+
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setShowOptions(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
   return (
     <div
       className={`${styles.Container} ${width && styles.ContainerWidth}`}
@@ -38,7 +39,8 @@ export default function DropDown({type, width = false, setOption}) {
         setShowOptions((prev) => !prev);
       }}
     >
-      <div className={styles.SelectBox}>{selected}</div>
+      <div className={styles.SelectBox}>{t(selected)}</div>
+
       {showOptions ? <DropDownCheckUpIcon /> : <DropDownCheckDownIcon />}
 
       {showOptions && (
@@ -52,7 +54,7 @@ export default function DropDown({type, width = false, setOption}) {
                 selectOption(option);
               }}
             >
-              <div className={styles.Element}>{option}</div>
+              <div className={styles.Element}>{t(option)}</div>
             </li>
           ))}
         </ul>
