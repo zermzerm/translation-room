@@ -35,14 +35,13 @@ export default function Room() {
   return (
     <div className={styles.Container}>
       <div className={styles.Header}>
-        <button type="button" className={styles.backButton} onClick={() => navigate("/")}>
+        <button type="button" className={styles.BackButton} onClick={() => navigate("/")}>
           ← {t("back")}
         </button>
         <div className={styles.TitleWrapper}>
           <div className={styles.Title}>{filterData.roomName}</div>
           <div className={styles.Information}>
-            {t(filterData.headquarter)} {t(filterData.field)}
-            {filterData.operationDate}
+            {t(filterData.headquarter)} {t(filterData.field)} • {filterData.operationDate}
           </div>
         </div>
       </div>
@@ -61,7 +60,7 @@ export default function Room() {
               {t(filterData.headquarter)} {t(filterData.field)}
             </div>
           </div>
-          <div> {filterData.operationDate}</div>
+          <div>{filterData.operationDate}</div>
         </div>
         <div className={styles.ContentHeader}>
           <div className={styles.StartButtonWrapper}>

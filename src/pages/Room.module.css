@@ -17,14 +17,18 @@
   gap: 15px;
 }
 
-.backButton {
-  padding: 7px 14px;
+.BackButton {
+  padding: 0 14px;
   border: 1px solid #e5e5e5;
-
   font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12.25px;
+}
+
+.BackButton:hover {
+  background-color: #e9ebef;
 }
 
 .TitleWrapper {
@@ -35,7 +39,7 @@
 
 .Title {
   font-size: 17.5px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .Information {
@@ -77,13 +81,14 @@
 }
 
 .Activity {
-  padding: 7.5px 10.5px;
+  padding: 5px 10.5px;
   background-color: #008578;
   color: white;
 }
 
 .ContentHeader {
   padding: 14px;
+  height: 63px;
   border: 1px solid #e5e5e5;
   display: flex;
   justify-content: space-between;
@@ -128,17 +133,17 @@
   color: white;
 }
 .Stop {
-  padding: 7px 10.5px;
+  padding: 5px 10.5px;
   color: white;
   background-color: oklch(0.577 0.245 27.325);
 }
 .TransStart {
-  padding: 7px 10.5px;
+  padding: 5px 10.5px;
   color: rgb(250, 209, 209);
   border: 1px solid rgb(250, 209, 209);
 }
 .TransStop {
-  padding: 7px 10.5px;
+  padding: 5px 10.5px;
   color: oklch(0.577 0.245 27.325);
   border: 1px solid oklch(0.577 0.245 27.325);
 }
