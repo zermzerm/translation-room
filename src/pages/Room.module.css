@@ -1,0 +1,174 @@
+.Container {
+  width: calc(100% - 210px);
+  height: calc(100% - 56px);
+  position: absolute;
+  margin-top: 56px;
+  margin-left: 210px;
+  /* z-index: 1; */
+  padding: 21px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  font-size: 12.25px;
+}
+
+.Header {
+  display: flex;
+  gap: 15px;
+}
+
+.backButton {
+  padding: 7px 14px;
+  border: 1px solid #e5e5e5;
+
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.TitleWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.Title {
+  font-size: 17.5px;
+  font-weight: 600;
+}
+
+.Information {
+  color: oklch(0.551 0.027 264.364);
+}
+
+.PageInfo {
+  display: flex;
+  gap: 10px;
+}
+
+.PrevPage {
+  color: #9ca3af;
+}
+
+.PrevPage:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.Content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.ContentStatus {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: oklch(0.446 0.03 256.802);
+}
+
+.StatusActivity {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.Activity {
+  padding: 7.5px 10.5px;
+  background-color: #008578;
+  color: white;
+}
+
+.ContentHeader {
+  padding: 14px;
+  border: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.StartButtonWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.StartButtonWrapper button {
+  display: flex;
+  align-items: center;
+  font-size: 12.25px;
+}
+
+.StartButtonWrapper svg {
+  margin-right: 15px;
+}
+
+.SettingWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.Setting {
+  display: flex;
+  align-items: center;
+}
+
+.SettingWrapper svg {
+  margin-right: 8px;
+}
+
+.Start {
+  padding: 7px 10.5px;
+  background-color: #008578;
+  color: white;
+}
+.Stop {
+  padding: 7px 10.5px;
+  color: white;
+  background-color: oklch(0.577 0.245 27.325);
+}
+.TransStart {
+  padding: 7px 10.5px;
+  color: rgb(250, 209, 209);
+  border: 1px solid rgb(250, 209, 209);
+}
+.TransStop {
+  padding: 7px 10.5px;
+  color: oklch(0.577 0.245 27.325);
+  border: 1px solid oklch(0.577 0.245 27.325);
+}
+.TransStatus {
+  padding: 4px 7px;
+  background-color: oklch(0.95 0.0058 264.53);
+}
+
+.LanguageContainer {
+  display: flex;
+  align-items: center;
+}
+
+.SelectedLanguage {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.SelectedLanguage svg {
+  margin-right: 5px;
+}
+
+.LanguageWrapper {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+.Language {
+  border: 1px solid #e5e5e5;
+  padding: 1.75px 7px;
+  font-size: 10.5px;
+}

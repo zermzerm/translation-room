@@ -106,5 +106,20 @@
     "operationDate": "운영일자",
     "status": "운영상태"
   },
-  "next": "다음"
+  "next": "다음",
+  "back": "돌아가기",
+  "startButton": "시작",
+  "stopButton": "일시정지",
+  "quit_translation": "번역종료",
+  "waiting": "대기 중",
+  "announcement": "공지사항",
+  "setting": "설정",
+  "summary": "요약",
+  "korean": "한글대본",
+  "real_time": "실시간",
+  "translation": "번역문",
+  "selected_lang": "선택된 언어:",
+  "upload": "파일 업로드",
+  "export": "내보내기",
+  "being_translated": "번역 중"
 }

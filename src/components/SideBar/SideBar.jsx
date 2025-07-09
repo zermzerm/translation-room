@@ -10,7 +10,7 @@ export default function SideBar() {
     <div className={styles.Container}>
       <div className={`${styles.SideBarSection} ${styles.firstSection}`}>
         <GlobeIcon />
-        <p>SMARTok({t("real-time_translation")})</p>
+        <p>SMARTok({t("real_time_translation")})</p>
       </div>
       <div className={styles.SideBarSection}>
         <SettingIcon />
