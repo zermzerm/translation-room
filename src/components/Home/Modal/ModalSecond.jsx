@@ -46,8 +46,10 @@ export default function ModalSecond({
         </div>
       </div>
       <div className={styles.ClickedLangArr}>
-        {isClicked.map((el) => (
-          <div className={styles.ClickedLang}>{el}</div>
+        {isClicked.map((el, idx) => (
+          <div className={styles.ClickedLang} key={idx}>
+            {el}
+          </div>
         ))}
       </div>
       <div>

@@ -109,15 +109,18 @@ export default function ModalContent({setIsOpen}) {
             className={styles.NextButton}
             onClick={() => {
               if (step === 3) {
-                localStorage.setItem("translateRoom", {
-                  qrName: qrName,
-                  qrActivity: qrActivity,
-                  date: date,
-                  headquarters: headquarters,
-                  field: field,
-                  isClicked: isClicked,
-                  isToggle: isToggle,
-                });
+                localStorage.setItem(
+                  "translateRoom",
+                  JSON.stringify({
+                    qrName,
+                    qrActivity,
+                    date,
+                    headquarters,
+                    field,
+                    isClicked,
+                    isToggle,
+                  })
+                );
                 setIsOpen(false);
               } else {
                 setStep((prev) => prev + 1);

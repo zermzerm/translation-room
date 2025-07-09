@@ -14,7 +14,7 @@ export default function DropDown({type, width = false, setOption = ""}) {
 
   const selectOption = (current) => {
     setSelected(current);
-    setOption(current);
+    setOption(t(current));
     setShowOptions(false);
   };
 
