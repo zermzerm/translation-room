@@ -1,16 +1,3 @@
-// export const TableHead = [
-//   "No",
-//   "본부",
-//   "현장명",
-//   "방이름",
-//   "활동구분",
-//   "생성일자",
-//   "번역속기록",
-//   "발표및 교육자료",
-//   "운영일자",
-//   "운영상태",
-// ];
-
 export const TableHead = [
   "table.no",
   "table.headquarter",

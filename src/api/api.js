@@ -15,7 +15,6 @@ export const translateApi = async (from, to, text) => {
         },
       }
     );
-    // console.log("API 응답", response.data);
     return response.data.result.result;
   } catch (error) {
     console.error("번역 실패:", error);
