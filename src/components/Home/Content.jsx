@@ -1,16 +1,16 @@
 import styles from "./Content.module.css";
-import {ResetIcon} from "../../assets/icons/ResetIcon";
-import {DateIcon} from "../../assets/icons/DateIcon";
-import {DocumentIcon} from "../../assets/icons/DocumentIcon";
-import {DownloadIcon} from "../../assets/icons/DownloadIcon";
+import { ResetIcon } from "../../assets/icons/ResetIcon";
+import { DateIcon } from "../../assets/icons/DateIcon";
+import { DocumentIcon } from "../../assets/icons/DocumentIcon";
+import { DownloadIcon } from "../../assets/icons/DownloadIcon";
 import DropDown from "../common/DropDown";
-import {TableData, TableHead} from "../../constants/table";
+import { TableData, TableHead } from "../../constants/table";
 import StatusIcon from "../common/StatusIcon";
-import {useState} from "react";
-import {useTranslation} from "react-i18next";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function Content() {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const [option, setOption] = useState("");
 
@@ -76,22 +76,24 @@ export default function Content() {
                   <span>{t(data.startDate)}</span>
                 </td>
                 <td className={styles.Record}>
-                  {data.record && (
-                    <>
-                      <DocumentIcon /> <DownloadIcon />
-                    </>
-                  )}
                   <a href="/files/plan.pptx" download={true}>
+                    {data.record && (
+                      <>
+                        <DocumentIcon /> <DownloadIcon />
+                      </>
+                    )}
+
                     {t(data.record)}
                   </a>
                 </td>
                 <td className={styles.Data}>
-                  {data.data && (
-                    <>
-                      <DocumentIcon /> <DownloadIcon />
-                    </>
-                  )}
                   <a href="/files/word.doc" download={true}>
+                    {data.data && (
+                      <>
+                        <DocumentIcon /> <DownloadIcon />
+                      </>
+                    )}
+
                     {t(data.data)}
                   </a>
                 </td>
