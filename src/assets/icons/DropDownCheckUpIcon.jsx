@@ -7,10 +7,9 @@ export const DropDownCheckUpIcon = () => (
     fill="none"
     stroke="rgb(182, 182, 191)"
     transform="rotate(180)"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    class="lucide lucide-chevron-down size-4 opacity-50"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     aria-hidden="true"
   >
     <path d="m6 9 6 6 6-6"></path>

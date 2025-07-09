@@ -6,10 +6,9 @@ export const CheckLangIcon = () => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="rgb(55, 132, 120)"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    class="lucide lucide-check smarty-text-primary-600"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     aria-hidden="true"
   >
     <path d="M20 6 9 17l-5-5"></path>
