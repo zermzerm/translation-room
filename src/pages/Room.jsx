@@ -38,7 +38,6 @@ export default function Room() {
     const currentLang = localStorage.getItem("lang");
     setIsLoading(true);
 
-    console.log(currentLang);
     try {
       const result = await translateApi(currentLang, lang, description);
       setTranslated((prev) => ({...prev, [lang]: result}));

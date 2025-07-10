@@ -18,12 +18,7 @@ export default function ModalFirst({setQrContent, setDate, setHeadquarters, setF
         </div>
         <div>
           <label className={styles.Label}>{t("operation_date")} *</label>
-          <input
-            type="search"
-            className={styles.Input}
-            placeholder={t("date")}
-            onChange={(e) => setDate(e.target.value)}
-          />
+          <input type="date" className={styles.Input} onChange={(e) => setDate(e.target.value)} />
         </div>
         <div>
           <label className={styles.Label}>{t("headquarters")} *</label>

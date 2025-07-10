@@ -1,31 +1,54 @@
 import styles from "./Content.module.css";
-import { ResetIcon } from "../../assets/icons/ResetIcon";
-import { DateIcon } from "../../assets/icons/DateIcon";
-import { DocumentIcon } from "../../assets/icons/DocumentIcon";
-import { DownloadIcon } from "../../assets/icons/DownloadIcon";
+import {ResetIcon} from "../../assets/icons/ResetIcon";
+import {DateIcon} from "../../assets/icons/DateIcon";
+import {DocumentIcon} from "../../assets/icons/DocumentIcon";
+import {DownloadIcon} from "../../assets/icons/DownloadIcon";
 import DropDown from "../common/DropDown";
-import { TableData, TableHead } from "../../constants/table";
+import {TableData, TableHead} from "../../constants/table";
 import StatusIcon from "../common/StatusIcon";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import {useState} from "react";
+import {useTranslation} from "react-i18next";
 
 export default function Content() {
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
-  const [option, setOption] = useState("");
+  const [headquarter, setHeadquarter] = useState("");
+  const [field, setField] = useState("");
+  const [activity, setActivity] = useState("");
+  const [date, setDate] = useState("");
+  const [status, setStatus] = useState("");
 
   const resetData = () => {
     setSearchTerm("");
-    setOption("");
+    setHeadquarter("");
+    setField("");
+    setActivity("");
+    setDate("");
+    setStatus("");
   };
 
   const filterData = TableData.filter((data) => {
     const term = searchTerm.toLowerCase();
-    return (
+
+    const matchesSearchTerm =
       t(data.headquarter).toLowerCase().includes(term) ||
       t(data.activity).toLowerCase().includes(term) ||
       t(data.field).toLowerCase().includes(term) ||
-      data.roomName.toLowerCase().includes(term)
+      data.roomName.toLowerCase().includes(term);
+
+    const matchesHeadquarter = !headquarter || data.headquarter === headquarter;
+    const matchesField = !field || data.field === field;
+    const matchesActivity = !activity || data.activity === activity;
+    const matchesDate = !date || data.operationDate === date;
+    const matchesStatus = !status || data.status.includes(status);
+
+    return (
+      matchesSearchTerm &&
+      matchesHeadquarter &&
+      matchesField &&
+      matchesActivity &&
+      matchesDate &&
+      matchesStatus
     );
   });
 
@@ -47,11 +70,11 @@ export default function Content() {
           value={searchTerm}
         />
         <div className={styles.DropDownWrapper}>
-          <DropDown type="headquarter" setOption={setOption} />
-          <DropDown type="field" setOption={setOption} />
-          <DropDown type="activity" setOption={setOption} />
-          <DropDown type="date" setOption={setOption} />
-          <DropDown type="status" setOption={setOption} />
+          <DropDown type="headquarter" setOption={setHeadquarter} />
+          <DropDown type="field" setOption={setField} />
+          <DropDown type="activity" setOption={setActivity} />
+          <DropDown type="date" setOption={setDate} />
+          <DropDown type="status" setOption={setStatus} />
         </div>
         <table className={styles.Table}>
           <thead>
