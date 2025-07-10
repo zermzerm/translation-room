@@ -1,9 +1,11 @@
+import {useNavigate} from "react-router-dom";
 import {AlarmIcon} from "../../assets/icons/AlarmIcon";
 import {LoginIcon} from "../../assets/icons/LoginIcon";
 import styles from "./NavBar.module.css";
 import {useTranslation} from "react-i18next";
 
 export default function NavBar() {
+  const navigate = useNavigate();
   const {i18n} = useTranslation();
   const {t} = useTranslation();
 
@@ -15,7 +17,7 @@ export default function NavBar() {
 
   return (
     <div className={styles.Container}>
-      <div className={styles.LogoWrapper}>
+      <div className={styles.LogoWrapper} onClick={() => navigate("/")}>
         <div className={styles.LogoSection}>s</div>
         <div>SMARTy {t("translation_system")}</div>
       </div>

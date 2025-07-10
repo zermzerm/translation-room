@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
 import {Document, Page, pdfjs} from "react-pdf";
 import styles from "./PdfContent.module.css";
+import "react-pdf/dist/Page/TextLayer.css";
+import "react-pdf/dist/Page/AnnotationLayer.css";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.js`;
 

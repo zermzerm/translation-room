@@ -8,7 +8,7 @@
 
 .PdfBox {
   position: relative;
-  width: 831px;
+  width: auto;
   height: 493px;
   overflow: hidden;
   display: flex;

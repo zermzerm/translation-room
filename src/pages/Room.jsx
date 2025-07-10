@@ -14,11 +14,7 @@ import {DownloadBigIcon} from "../assets/icons/DownloadBigIcon";
 import {DocumentStandardIcon} from "../assets/icons/DocumentStandardIcon";
 import {LanguageIcon} from "../assets/icons/LanguageIcon";
 import {Language} from "../constants/language";
-import {Document, Page, pdfjs} from "react-pdf";
 import PdfContent from "./PdfContent";
-
-// 워커 파일 경로 설정 (import 아님!)
-pdfjs.GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.js`;
 
 export default function Room() {
   const {t} = useTranslation();
@@ -27,20 +23,7 @@ export default function Room() {
   const params = useParams();
   const [translated, setTranslated] = useState({});
   const [isTranslation, setIsTranslation] = useState(false);
-  const [numPages, setNumPages] = useState(1);
-  const [pageNumber, setPageNumber] = useState(1);
-
-  const onLoadSuccess = ({numPages}) => {
-    setNumPages(numPages);
-  };
-
-  const goPrevPage = () => {
-    setPageNumber((prev) => Math.max(prev - 1, 1));
-  };
-
-  const goNextPage = () => {
-    setPageNumber((prev) => Math.min(prev + 1, numPages));
-  };
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleDownload = () => {
     const link = document.createElement("a");
@@ -52,11 +35,17 @@ export default function Room() {
   const filterData = TableData.filter((el) => el.id === +params.id)[0];
 
   const handleTranslate = async (lang) => {
+    const currentLang = localStorage.getItem("lang");
+    setIsLoading(true);
+
+    console.log(currentLang);
     try {
-      const result = await translateApi("ko", lang, description);
+      const result = await translateApi(currentLang, lang, description);
       setTranslated((prev) => ({...prev, [lang]: result}));
     } catch (e) {
       alert("오류!");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -160,7 +149,7 @@ export default function Room() {
                     {/* filterDate.lang으로 map 돌려서 위의 시작하기 버튼 누르면 */}
                     {/* 한번에 세가지 번역돼서 아래에 표현하고 싶었으나, 해결안돼서 따로 버튼 만듦 */}
                     <button onClick={() => handleTranslate(el)} className={styles.TransButton}>
-                      번역하기
+                      {isLoading ? "번역 중..." : "번역하기"}
                     </button>
                   </div>
                   <div className={styles.TransContent}>
