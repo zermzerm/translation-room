@@ -1,0 +1,44 @@
+.ViewerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.PdfBox {
+  position: relative;
+  width: 831px;
+  height: 493px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  background-color: #fdfdfd;
+}
+
+.PageInfo {
+  position: absolute;
+  bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.NavButton {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #333;
+  cursor: pointer;
+  user-select: none;
+}
+
+.NavButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}

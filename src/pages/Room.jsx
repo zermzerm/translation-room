@@ -14,6 +14,11 @@ import {DownloadBigIcon} from "../assets/icons/DownloadBigIcon";
 import {DocumentStandardIcon} from "../assets/icons/DocumentStandardIcon";
 import {LanguageIcon} from "../assets/icons/LanguageIcon";
 import {Language} from "../constants/language";
+import {Document, Page, pdfjs} from "react-pdf";
+import PdfContent from "./PdfContent";
+
+// 워커 파일 경로 설정 (import 아님!)
+pdfjs.GlobalWorkerOptions.workerSrc = `${process.env.PUBLIC_URL}/pdf.worker.js`;
 
 export default function Room() {
   const {t} = useTranslation();
@@ -22,6 +27,27 @@ export default function Room() {
   const params = useParams();
   const [translated, setTranslated] = useState({});
   const [isTranslation, setIsTranslation] = useState(false);
+  const [numPages, setNumPages] = useState(1);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  const onLoadSuccess = ({numPages}) => {
+    setNumPages(numPages);
+  };
+
+  const goPrevPage = () => {
+    setPageNumber((prev) => Math.max(prev - 1, 1));
+  };
+
+  const goNextPage = () => {
+    setPageNumber((prev) => Math.min(prev + 1, numPages));
+  };
+
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/files/sample.pdf";
+    link.download = "sample.pdf";
+    link.click();
+  };
 
   const filterData = TableData.filter((el) => el.id === +params.id)[0];
 
@@ -29,7 +55,6 @@ export default function Room() {
     try {
       const result = await translateApi("ko", lang, description);
       setTranslated((prev) => ({...prev, [lang]: result}));
-      console.log(translated);
     } catch (e) {
       alert("오류!");
     }
@@ -106,7 +131,9 @@ export default function Room() {
           </div>
         </div>
         <div className={styles.ScriptContent}>
-          <div className={styles.PdfContainer}>pdf뷰어</div>
+          <div className={styles.PdfContainer}>
+            <PdfContent />
+          </div>
           <div className={styles.KoScriptContainer}>
             <div className={styles.KoScriptHeader}>
               <div>{t("korean")}</div>
@@ -167,7 +194,7 @@ export default function Room() {
               <UploadIcon />
               <p>{t("upload")}</p>
             </div>
-            <div className={styles.Setting}>
+            <div className={styles.Setting} onClick={handleDownload}>
               <DownloadBigIcon />
               <p>{t("export")}</p>
             </div>
