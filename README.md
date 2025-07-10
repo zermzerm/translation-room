@@ -13,7 +13,7 @@ Translation Web
 - Axios: ^1.10.0 → API 호출 (자사 NMT 번역 API)
 - react-modal: ^3.16.3 → 모달창
 - qrcode.react: ^4.2.0 → QR 이미지 생성
-- react-pdf, pdfjs-dist, core-js : pdf 뷰어
+- react-pdf, pdfjs-dist : pdf 뷰어
 
 ---
 
