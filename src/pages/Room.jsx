@@ -1,53 +1,50 @@
-import { useState } from "react";
-import { translateApi } from "../api/api";
+import {useState} from "react";
+import {translateApi} from "../api/api";
 import styles from "./Room.module.css";
-import { TableData } from "../constants/table";
-import { useNavigate, useParams } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { AlarmIcon } from "../assets/icons/AlarmIcon";
-import { SettingIcon } from "../assets/icons/SettingIcon";
-import { StartBigIcon } from "../assets/icons/StartBigIcon";
-import { StopIcon } from "../assets/icons/StopIcon";
-import { PauseBigIcon } from "../assets/icons/PauseBigIcon";
-import { UploadIcon } from "../assets/icons/UploadIcon";
-import { DownloadBigIcon } from "../assets/icons/DownloadBigIcon";
-import { DocumentStandardIcon } from "../assets/icons/DocumentStandardIcon";
-import { LanguageIcon } from "../assets/icons/LanguageIcon";
+import {TableData} from "../constants/table";
+import {useNavigate, useParams} from "react-router-dom";
+import {useTranslation} from "react-i18next";
+import {AlarmIcon} from "../assets/icons/AlarmIcon";
+import {SettingIcon} from "../assets/icons/SettingIcon";
+import {StartBigIcon} from "../assets/icons/StartBigIcon";
+import {StopIcon} from "../assets/icons/StopIcon";
+import {PauseBigIcon} from "../assets/icons/PauseBigIcon";
+import {UploadIcon} from "../assets/icons/UploadIcon";
+import {DownloadBigIcon} from "../assets/icons/DownloadBigIcon";
+import {DocumentStandardIcon} from "../assets/icons/DocumentStandardIcon";
+import {LanguageIcon} from "../assets/icons/LanguageIcon";
+import {Language} from "../constants/language";
 
 export default function Room() {
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   const description = t("description");
   const navigate = useNavigate();
   const params = useParams();
-  const [input, setInput] = useState("");
-  const [translated, setTranslated] = useState("");
+  const [translated, setTranslated] = useState({});
   const [isTranslation, setIsTranslation] = useState(false);
 
   const filterData = TableData.filter((el) => el.id === +params.id)[0];
 
-  const handleTranslate = async () => {
+  const handleTranslate = async (lang) => {
     try {
-      const result = await translateApi("ko", "ja", input);
-      setTranslated(result);
+      const result = await translateApi("ko", lang, description);
+      setTranslated((prev) => ({...prev, [lang]: result}));
+      console.log(translated);
     } catch (e) {
-      alert("번역 중 오류가 발생했습니다.");
+      alert("오류!");
     }
   };
+
   return (
     <div className={styles.Container}>
       <div className={styles.Header}>
-        <button
-          type="button"
-          className={styles.BackButton}
-          onClick={() => navigate("/")}
-        >
+        <button type="button" className={styles.BackButton} onClick={() => navigate("/")}>
           ← {t("back")}
         </button>
         <div className={styles.TitleWrapper}>
           <div className={styles.Title}>{filterData.roomName}</div>
           <div className={styles.Information}>
-            {t(filterData.headquarter)} {t(filterData.field)} •{" "}
-            {filterData.operationDate}
+            {t(filterData.headquarter)} {t(filterData.field)} • {filterData.operationDate}
           </div>
         </div>
       </div>
@@ -71,18 +68,19 @@ export default function Room() {
         <div className={styles.ContentHeader}>
           <div className={styles.StartButtonWrapper}>
             <button
-              onClick={() => setIsTranslation((prev) => !prev)}
+              onClick={() => {
+                setIsTranslation((prev) => !prev);
+                if (!isTranslation) handleTranslate();
+              }}
               className={isTranslation ? styles.Stop : styles.Start}
             >
               {isTranslation ? <PauseBigIcon /> : <StartBigIcon />}
-              {isTranslation ? (
-                <p>{t("stopButton")}</p>
-              ) : (
-                <p>{t("startButton")}</p>
-              )}
+              {isTranslation ? <p>{t("stopButton")}</p> : <p>{t("startButton")}</p>}
             </button>
             <button
-              onClick={() => setIsTranslation((prev) => !prev)}
+              onClick={() => {
+                if (isTranslation) setIsTranslation((prev) => !prev);
+              }}
               className={isTranslation ? styles.TransStop : styles.TransStart}
             >
               <StopIcon />
@@ -112,7 +110,7 @@ export default function Room() {
           <div className={styles.KoScriptContainer}>
             <div className={styles.KoScriptHeader}>
               <div>{t("korean")}</div>
-              <div>{t("real_time")}</div>
+              <div className={styles.RealTime}>{t("real_time")}</div>
             </div>
             <div className={styles.ScriptWrapper}>
               {description.split("\n").map((el, idx) => (
@@ -125,12 +123,28 @@ export default function Room() {
           <div className={styles.MultilingualContainer}>
             <div className={styles.MultilingualHeader}>
               <div>{t("translation")}</div>
-              <div>{t("korean")}</div>
+              <div className={styles.RealTime}>{t("real_time")}</div>
             </div>
             <div className={styles.MultilingualWrapper}>
-              <div className={styles.EnglishScript}>ENG (English)</div>
-              <div className={styles.EnglishScript}>CHN (中文)</div>
-              <div className={styles.EnglishScript}>THA (ไทย)</div>
+              {filterData.lang.map((el) => (
+                <div className={styles.FirstLangScript} key={el}>
+                  <div className={styles.FirstLangHeader}>
+                    <p>{Language[el]}</p>
+                    {/* filterDate.lang으로 map 돌려서 위의 시작하기 버튼 누르면 */}
+                    {/* 한번에 세가지 번역돼서 아래에 표현하고 싶었으나, 해결안돼서 따로 버튼 만듦 */}
+                    <button onClick={() => handleTranslate(el)} className={styles.TransButton}>
+                      번역하기
+                    </button>
+                  </div>
+                  <div className={styles.TransContent}>
+                    {translated[el] ? (
+                      translated[el].split("\n").map((lang, idx) => <p key={idx}>{lang}</p>)
+                    ) : (
+                      <p className={styles.NotTrans}>아직 번역되지 않았습니다.</p>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -161,24 +175,5 @@ export default function Room() {
         </div>
       </div>
     </div>
-    // <div className={styles.Container}>
-    //   <h2>번역 테스트</h2>
-    //   <textarea
-    //     rows={4}
-    //     value={input}
-    //     onChange={(e) => setInput(e.target.value)}
-    //     placeholder="번역할 문장을 입력하세요"
-    //   />
-    //   <br />
-    //   <button onClick={handleTranslate} style={{border: "1px solid #000"}}>
-    //     번역하기
-    //   </button>
-    //   {translated && (
-    //     <div>
-    //       <h3>번역 결과:</h3>
-    //       <p>{translated}</p>
-    //     </div>
-    //   )}
-    // </div>
   );
 }

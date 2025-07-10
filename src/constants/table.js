@@ -23,7 +23,7 @@ export const TableData = [
     data: "common.download",
     operationDate: "2025-06-05",
     status: ["status.operating", "status.joined"],
-    lang: ["ENG", "CHN", "THN"],
+    lang: ["en", "zh", "ru"],
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ export const TableData = [
     data: "common.download",
     operationDate: "2025-06-06",
     status: ["status.verifying", "status.verifying"],
-    lang: ["ENG", "CHN", "THN"],
+    lang: ["en", "zh", "ru"],
   },
   {
     id: 3,
@@ -49,7 +49,7 @@ export const TableData = [
     data: "",
     operationDate: "2025-06-10",
     status: ["status.writing", "status.ready"],
-    lang: ["ENG", "CHN", "THN"],
+    lang: ["en", "zh", "ru"],
   },
   {
     id: 4,
@@ -62,7 +62,7 @@ export const TableData = [
     data: "",
     operationDate: "2025-06-05",
     status: ["status.operating", "status.start"],
-    lang: ["ENG", "CHN", "THN"],
+    lang: ["en", "zh", "ru"],
   },
   {
     id: 5,
@@ -75,7 +75,7 @@ export const TableData = [
     data: "common.download",
     operationDate: "2025-06-07",
     status: ["status.verifying", "status.verifying"],
-    lang: ["ENG", "CHN", "THN"],
+    lang: ["en", "zh", "ru"],
   },
   {
     id: 6,
@@ -88,7 +88,7 @@ export const TableData = [
     data: "common.download",
     operationDate: "2025-06-04",
     status: ["status.operating", "status.joined"],
-    lang: ["ENG", "CHN", "THN"],
+    lang: ["en", "zh", "ru"],
   },
   {
     id: 7,
@@ -101,6 +101,6 @@ export const TableData = [
     data: "",
     operationDate: "2025-06-08",
     status: ["status.writing", "status.ready"],
-    lang: ["ENG", "CHN", "THN"],
+    lang: ["en", "zh", "ru"],
   },
 ];
