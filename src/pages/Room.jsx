@@ -14,7 +14,7 @@ import {DownloadBigIcon} from "../assets/icons/DownloadBigIcon";
 import {DocumentStandardIcon} from "../assets/icons/DocumentStandardIcon";
 import {LanguageIcon} from "../assets/icons/LanguageIcon";
 import {Language} from "../constants/language";
-import PdfContent from "./PdfContent";
+import PdfContent from "../components/Room/PdfContent";
 
 export default function Room() {
   const {t} = useTranslation();
