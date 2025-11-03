@@ -90,7 +90,11 @@ export default function Content() {
                 <td>{t(data.id)}</td>
                 <td>{t(data.headquarter)}</td>
                 <td className={styles.Field}>{t(data.field)}</td>
-                <td className={styles.RoomName}>{t(data.roomName)}</td>
+                <td>
+                  <a href={`/room/${data.id}`} className={styles.Link}>
+                    {t(data.roomName)}
+                  </a>
+                </td>
                 <td>
                   <span className={styles.Activity}>{t(data.activity)}</span>
                 </td>

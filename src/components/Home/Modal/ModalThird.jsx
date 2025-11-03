@@ -26,7 +26,7 @@ export default function ModalThird({qrCode}) {
       </button>
       <div>
         <p className={styles.QrDescription}>{t("qr_description")}</p>
-        <p className={styles.QrDescriptionTwo}>{t("or_direct")}: translate.smarty.co.kr</p>
+        <p className={styles.QrDescriptionTwo}>{t("or_direct")}: translate.co.kr</p>
       </div>
     </div>
   );

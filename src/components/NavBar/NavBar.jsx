@@ -19,7 +19,7 @@ export default function NavBar() {
     <div className={styles.Container}>
       <div className={styles.LogoWrapper} onClick={() => navigate("/")}>
         <div className={styles.LogoSection}>s</div>
-        <div>SMARTy {t("translation_system")}</div>
+        <div>{t("translation_system")}</div>
       </div>
       <div className={styles.AlarmSection}>
         <select onChange={handleChange} value={i18n.language} className={styles.SelectBox}>

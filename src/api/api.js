@@ -3,7 +3,7 @@ import axios from "axios";
 export const translateApi = async (from, to, text) => {
   try {
     const response = await axios.post(
-      "https://model-nmt.aidmtlabs.com/api/texts/translation",
+      "https://api~",
       {
         from_lang: from,
         to_lang: to,

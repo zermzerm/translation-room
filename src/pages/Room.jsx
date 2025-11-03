@@ -64,7 +64,7 @@ export default function Room() {
       <div className={styles.Content}>
         <div className={styles.PageInfo}>
           <div className={styles.PrevPage} onClick={() => navigate("/")}>
-            SMARTok({t("real_time_translation")})
+            ({t("real_time_translation")})
           </div>
           <div>&gt;</div>
           <div>{filterData.roomName}</div>
