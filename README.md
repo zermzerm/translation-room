@@ -2,7 +2,7 @@
 
 Translation Web
 
-# 번역방 과제 - React 기반 구현
+# 번역방 - React 기반 구현
 
 ## 🛠️ 기술 스택
 
