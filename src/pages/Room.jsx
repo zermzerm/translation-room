@@ -145,8 +145,6 @@ export default function Room() {
                 <div className={styles.FirstLangScript} key={el}>
                   <div className={styles.FirstLangHeader}>
                     <p>{Language[el]}</p>
-                    {/* filterDate.lang으로 map 돌려서 위의 시작하기 버튼 누르면 */}
-                    {/* 한번에 세가지 번역돼서 아래에 표현하고 싶었으나, 해결안돼서 따로 버튼 만듦 */}
                     <button onClick={() => handleTranslate(el)} className={styles.TransButton}>
                       {isLoading ? "번역 중..." : "번역하기"}
                     </button>
