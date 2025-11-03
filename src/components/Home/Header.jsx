@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <header className={styles.Container}>
       <div>
-        <div className={styles.Title}>({t("real_time_translation")})</div>
+        <div className={styles.Title}>{t("real_time_translation")}</div>
         <div className={styles.Description}>{t("real_time_description")}</div>
       </div>
       <div>

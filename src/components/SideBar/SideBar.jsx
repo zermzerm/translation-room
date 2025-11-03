@@ -10,7 +10,7 @@ export default function SideBar() {
     <div className={styles.Container}>
       <div className={`${styles.SideBarSection} ${styles.firstSection}`}>
         <GlobeIcon />
-        <p>({t("real_time_translation")})</p>
+        <p>{t("real_time_translation")}</p>
       </div>
       <div className={styles.SideBarSection}>
         <SettingIcon />
