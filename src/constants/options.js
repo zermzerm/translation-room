@@ -25,16 +25,16 @@ export const activity = [
 
 export const date = [
   "filter.date.all",
-  "filter.date.2025-06-04",
-  "filter.date.2025-06-03",
-  "filter.date.2025-06-02",
-  "filter.date.2025-06-01",
-  "filter.date.2025-05-30",
+  "2025-06-04",
+  "2025-06-03",
+  "2025-06-02",
+  "2025-06-01",
+  "2025-05-30",
 ];
 
 export const status = [
   "filter.status.all",
-  "filter.status.writing",
-  "filter.status.verifying",
-  "filter.status.operating",
+  "status.writing",
+  "status.verifying",
+  "status.operating",
 ];

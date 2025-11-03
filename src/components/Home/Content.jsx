@@ -39,8 +39,9 @@ export default function Content() {
     const matchesHeadquarter = !headquarter || data.headquarter === headquarter;
     const matchesField = !field || data.field === field;
     const matchesActivity = !activity || data.activity === activity;
-    const matchesDate = !date || data.operationDate === date;
+    const matchesDate = !date || data.startDate === date;
     const matchesStatus = !status || data.status.includes(status);
+    console.log(status);
 
     return (
       matchesSearchTerm &&
